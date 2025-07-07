@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebActivatorEx;
-using YakeenLib.Models;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
