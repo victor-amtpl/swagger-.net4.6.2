@@ -1,4 +1,4 @@
-using BcareApi;
+using YourApi;
 using Swashbuckle.Application;
 using Swashbuckle.Swagger;
 using System.Collections.Generic;
