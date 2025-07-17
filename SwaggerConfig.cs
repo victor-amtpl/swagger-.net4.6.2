@@ -29,4 +29,29 @@ namespace YourApi
                     });
         }
     }
+
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    public class SwaggerTagAttribute : Attribute
+    {
+        public string Tag { get; }
+        public SwaggerTagAttribute(string tag)
+        {
+            Tag = tag;
+        }
+    }
+
+    public class TagByAttributeFilter : IOperationFilter
+    {
+        public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
+        {
+            var attr = apiDescription.ActionDescriptor.GetCustomAttributes<SwaggerTagAttribute>();
+            if (attr != null && attr.Any())
+            {
+                operation.tags = new List<string> { attr.First().Tag };
+            }
+        }
+    }
+
+     //[SwaggerTag("TEST TAG 1")]
+     //[SwaggerTag("TEST TAG 2")]
 }
