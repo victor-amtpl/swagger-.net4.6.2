@@ -21,6 +21,7 @@ namespace YourApi
                     {
                         c.SingleApiVersion("v1", "YourAPI");
                         c.SchemaId(type => type.FullName);
+                        c.OperationFilter<TagByAttributeFilter>();
                         c.OperationFilter<Swashbuckle.Examples.ExamplesOperationFilter>();
                     })
                 .EnableSwaggerUi(c =>
